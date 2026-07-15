@@ -43,7 +43,7 @@ npm install
 
 ### 3. Set up the database
 
-In Azure Portal, open your SQL Database → **Query editor** and paste in the contents of `completed_file.sql`, **starting from the `CREATE TABLE Customer` line** (skip the top section that creates/drops the database — Azure already created it for you).
+In Azure Portal, open your SQL Database → **Query editor** and paste in the contents of `completed_file.sql`.
 
 This will create all the tables and load the sample data.
 
