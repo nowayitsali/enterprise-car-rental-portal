@@ -22,23 +22,6 @@
         instead of storing values that could become inconsistent.
 */
 
-USE master;
-GO
-
--- I drop the database first so I can rerun the entire script during testing.
-IF DB_ID('EnterpriseRentACarDB') IS NOT NULL
-BEGIN
-    ALTER DATABASE EnterpriseRentACarDB SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
-    DROP DATABASE EnterpriseRentACarDB;
-END;
-GO
-
-CREATE DATABASE EnterpriseRentACarDB;
-GO
-
-USE EnterpriseRentACarDB;
-GO
-
 /* =========================================================
    PART A: TABLE CREATION AND DATA INTEGRITY
    ========================================================= */
