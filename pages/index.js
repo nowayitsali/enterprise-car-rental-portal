@@ -4,6 +4,9 @@ import { useState, useEffect, useCallback } from 'react'
 const api = (path, opts = {}) =>
   fetch(path, { headers: { 'Content-Type': 'application/json' }, ...opts }).then(r => r.json())
 
+// Edits and deletes are temporarily disabled to protect the database.
+const disabledAction = () => alert('currently disabled due to security reasons')
+
 function fmtMoney(n) {
   return '$' + parseFloat(n || 0).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 }
@@ -292,8 +295,8 @@ function CustomersTab({ showToast }) {
                   <td>{r.Tier ? <Badge value={r.Tier} /> : '—'}</td>
                   <td>{r.PointsBalance ?? '—'}</td>
                   <td style={{ display: 'flex', gap: 6 }}>
-                    <button className="btn btn-sm btn-outline" onClick={() => openEdit(r)}>Edit</button>
-                    <button className="btn btn-sm btn-danger" onClick={() => del(r.CustomerID)}>Delete</button>
+                    <button className="btn btn-sm btn-outline" onClick={disabledAction}>Edit</button>
+                    <button className="btn btn-sm btn-danger" onClick={disabledAction}>Delete</button>
                   </td>
                 </tr>
               ))}
@@ -370,8 +373,8 @@ function EmployeesTab({ showToast }) {
                   <td>{r.EmployeeID}</td><td>{r.FirstName} {r.LastName}</td>
                   <td><Badge value={r.Role} /></td><td>{r.Email}</td><td>{r.PhoneNo}</td>
                   <td style={{ display: 'flex', gap: 6 }}>
-                    <button className="btn btn-sm btn-outline" onClick={() => openEdit(r)}>Edit</button>
-                    <button className="btn btn-sm btn-danger" onClick={() => del(r.EmployeeID)}>Delete</button>
+                    <button className="btn btn-sm btn-outline" onClick={disabledAction}>Edit</button>
+                    <button className="btn btn-sm btn-danger" onClick={disabledAction}>Delete</button>
                   </td>
                 </tr>
               ))}
@@ -451,8 +454,8 @@ function BranchesTab({ showToast }) {
                   <td>{r.BranchID}</td><td>{r.BranchName}</td><td>{r.Street}</td>
                   <td>{r.City}</td><td>{r.Province}</td><td>{r.PostalCode}</td><td>{r.PhoneNo}</td>
                   <td style={{ display: 'flex', gap: 6 }}>
-                    <button className="btn btn-sm btn-outline" onClick={() => openEdit(r)}>Edit</button>
-                    <button className="btn btn-sm btn-danger" onClick={() => del(r.BranchID)}>Delete</button>
+                    <button className="btn btn-sm btn-outline" onClick={disabledAction}>Edit</button>
+                    <button className="btn btn-sm btn-danger" onClick={disabledAction}>Delete</button>
                   </td>
                 </tr>
               ))}
@@ -563,8 +566,8 @@ function FleetTab({ showToast }) {
                   <td>{r.FuelType}</td><td>{r.BranchName}</td>
                   <td><Badge value={r.Status} /></td>
                   <td style={{ display: 'flex', gap: 6 }}>
-                    <button className="btn btn-sm btn-outline" onClick={() => openEdit(r)}>Edit</button>
-                    <button className="btn btn-sm btn-danger" onClick={() => del(r.VIN)}>Delete</button>
+                    <button className="btn btn-sm btn-outline" onClick={disabledAction}>Edit</button>
+                    <button className="btn btn-sm btn-danger" onClick={disabledAction}>Delete</button>
                   </td>
                 </tr>
               ))}
@@ -692,8 +695,8 @@ function ReservationsTab({ showToast }) {
                   <td><Badge value={r.ReservationStatus} /></td>
                   <td>{r.PromoCode || '—'}</td>
                   <td style={{ display: 'flex', gap: 6 }}>
-                    <button className="btn btn-sm btn-outline" onClick={() => openEdit(r)}>Edit</button>
-                    <button className="btn btn-sm btn-danger" onClick={() => del(r.ResNum)}>Delete</button>
+                    <button className="btn btn-sm btn-outline" onClick={disabledAction}>Edit</button>
+                    <button className="btn btn-sm btn-danger" onClick={disabledAction}>Delete</button>
                   </td>
                 </tr>
               ))}
@@ -871,7 +874,7 @@ function MaintenanceTab({ showToast }) {
                   <td>{r.ServiceType}</td><td>{fmtDate(r.MaintenanceDate)}</td>
                   <td>{fmtMoney(r.ServiceCost)}</td>
                   <td style={{ fontSize: 12, color: 'var(--muted)' }}>{r.Notes || '—'}</td>
-                  <td><button className="btn btn-sm btn-danger" onClick={() => del(r.MaintenanceID)}>Delete</button></td>
+                  <td><button className="btn btn-sm btn-danger" onClick={disabledAction}>Delete</button></td>
                 </tr>
               ))}
             </tbody>
